@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Optimization Guide — Michael Romanek</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #111111;
+      --graphite: #4A4F55;
+      --burgundy: #7A1E2C;
+      --burgundy-lt: rgba(122,30,44,0.08);
+      --white: #FFFFFF;
+      --off-white: #F7F5F2;
+      --light-gray: #F0EFED;
+      --mid-gray: #DDDBD8;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--off-white); color: var(--black); line-height: 1.65; }
+
+    /* ── Header ── */
+    .doc-header {
+      background: var(--black);
+      border-bottom: 4px solid var(--burgundy);
+      padding: 3rem 4rem;
+    }
+    .doc-header .eyebrow { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 3px; color: var(--burgundy); text-transform: uppercase; margin-bottom: 0.75rem; }
+    .doc-header h1 { font-family: var(--serif); font-size: 2.8rem; font-weight: 600; color: var(--white); }
+    .doc-header .subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.55); margin-top: 0.5rem; }
+
+    /* ── Layout ── */
+    .doc-body { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 3rem; }
+    .section-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 3px; color: var(--burgundy); text-transform: uppercase; margin-bottom: 0.4rem; }
+    h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; color: var(--black); margin-bottom: 0.5rem; }
+    .divider { width: 40px; height: 3px; background: var(--burgundy); margin: 0.5rem 0 1.5rem; }
+    p { font-size: 0.95rem; color: var(--graphite); margin-bottom: 0.75rem; line-height: 1.7; }
+    strong { color: var(--black); font-weight: 600; }
+
+    /* ── Callout Box ── */
+    .callout {
+      background: var(--burgundy-lt);
+      border-left: 3px solid var(--burgundy);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 3px 3px 0;
+      margin: 1.25rem 0;
+    }
+    .callout .callout-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 2px; color: var(--burgundy); text-transform: uppercase; margin-bottom: 0.4rem; }
+    .callout p { color: var(--black); margin: 0; font-size: 0.93rem; }
+
+    /* ── Code Block ── */
+    .code-block {
+      background: var(--black);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+      position: relative;
+    }
+    .code-block .code-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 2px; color: var(--burgundy); text-transform: uppercase; margin-bottom: 0.75rem; }
+    .code-block pre { font-family: var(--mono); font-size: 0.85rem; color: rgba(255,255,255,0.85); white-space: pre-wrap; line-height: 1.65; }
+    .code-block pre em { color: var(--burgundy); font-style: normal; }
+
+    /* ── Checklist ── */
+    .checklist { list-style: none; margin: 1rem 0; }
+    .checklist li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--mid-gray); font-size: 0.9rem; color: var(--graphite); }
+    .checklist li:last-child { border-bottom: none; }
+    .check-box { width: 18px; height: 18px; border: 1.5px solid var(--burgundy); border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+
+    /* ── Priority Cards ── */
+    .priority-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+    .priority-card { background: var(--white); border: 1px solid var(--mid-gray); border-top: 3px solid var(--burgundy); padding: 1.25rem; border-radius: 0 0 3px 3px; }
+    .priority-card .pnum { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 2px; color: var(--burgundy); margin-bottom: 0.3rem; }
+    .priority-card h3 { font-family: var(--serif); font-size: 1rem; color: var(--black); margin-bottom: 0.5rem; }
+    .priority-card p { font-size: 0.84rem; color: var(--graphite); margin: 0; line-height: 1.55; }
+
+    /* ── Table ── */
+    .table-wrap { overflow-x: auto; margin: 1.25rem 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    thead { background: var(--black); }
+    thead th { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 2px; color: var(--burgundy); text-transform: uppercase; padding: 0.75rem 1rem; text-align: left; }
+    tbody tr { border-bottom: 1px solid var(--mid-gray); }
+    tbody tr:nth-child(even) { background: var(--light-gray); }
+    tbody td { padding: 0.65rem 1rem; color: var(--graphite); vertical-align: top; }
+    tbody td strong { color: var(--black); }
+    .badge { display: inline-block; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 1px; padding: 0.2rem 0.5rem; border-radius: 2px; }
+    .badge-high { background: rgba(122,30,44,0.12); color: var(--burgundy); }
+    .badge-med { background: var(--light-gray); color: var(--graphite); }
+
+    /* ── Footer ── */
+    .doc-footer { background: var(--black); color: rgba(255,255,255,0.3); text-align: center; padding: 1.5rem; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 2px; margin-top: 3rem; }
+    .doc-footer span { color: var(--burgundy); }
+  </style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="eyebrow">Part 3 · Brand Application</div>
+  <h1>LinkedIn Optimization Guide</h1>
+  <div class="subtitle">Michael Romanek &nbsp;·&nbsp; UX Researcher & Designer &nbsp;·&nbsp; MSOE '27</div>
+</div>
+
+<div class="doc-body">
+
+  <!-- 01 Profile Photo + Banner -->
+  <div class="section">
+    <div class="section-label">01 — Visual Identity</div>
+    <h2>Profile Photo &amp; Banner</h2>
+    <div class="divider"></div>
+
+    <p>Your visual presence is the first and fastest signal of your brand's professionalism. The goal: every element on your LinkedIn profile should feel like it belongs to the same intentional identity as your resume and portfolio.</p>
+
+    <div class="priority-grid">
+      <div class="priority-card">
+        <div class="pnum">Profile Photo</div>
+        <h3>Professional Headshot</h3>
+        <p>Use a clean, well-lit headshot with a neutral or simple background. Business casual or smart-casual attire. Confident expression — approachable but not overly casual. Your photo should look like someone a hiring manager would trust to run a research session.</p>
+      </div>
+      <div class="priority-card">
+        <div class="pnum">Banner Image</div>
+        <h3>Branded Banner</h3>
+        <p>Create a 1584×396px banner that reflects your brand. Recommended: Rich Black background (#111111), your "MR" monogram or wordmark, a thin Deep Burgundy (#7A1E2C) rule, and your headline or specialty in Playfair Display. Canva or Figma both work well for this.</p>
+      </div>
+      <div class="priority-card">
+        <div class="pnum">Color Consistency</div>
+        <h3>Apply the Palette</h3>
+        <p>If creating graphics (banner, featured section images), use <strong>#111111</strong>, <strong>#7A1E2C</strong>, and <strong>#4A4F55</strong> consistently. This visual consistency reinforces your Research Authority Minimal brand across every touchpoint a recruiter sees.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Action Item</div>
+      <p>Open Figma or Canva and create your LinkedIn banner now using the brand colors. Export at 1584×396px. Feature the MR monogram, your name in Playfair Display, and "UX Researcher & Designer" in Inter.</p>
+    </div>
+  </div>
+
+  <!-- 02 Headline -->
+  <div class="section">
+    <div class="section-label">02 — Headline</div>
+    <h2>Crafting Your Headline</h2>
+    <div class="divider"></div>
+
+    <p>LinkedIn's headline is 220 characters and is shown in search results, connection requests, and messages — it's often the only text someone reads before clicking your profile. It should summarize your brand in one scannable line.</p>
+
+    <div class="callout">
+      <div class="callout-label">Current Headline</div>
+      <p>UX Research & Design Student at MSOE '27 | AI for Emerging Apps Cert. | Seeking UX Internship or Consultant Role | Accessibility | Usability Testing | Front-End Developer |</p>
+    </div>
+
+    <p>The current headline is comprehensive but slightly dense. Here are two improved versions:</p>
+
+    <div class="code-block">
+      <div class="code-label">Recommended Headline — Option A (Research-Forward)</div>
+      <pre>UX Researcher · Qualitative Research | Accessibility Evaluation | Conversational AI | MSOE '27 | Seeking UX Internship</pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-label">Recommended Headline — Option B (Brand Statement)</div>
+      <pre>Research-Driven UX Designer | Field Observations · WCAG Accessibility · Conversational AI | MSOE '27 | Open to Internships</pre>
+    </div>
+
+    <p><strong>Why these work:</strong> They lead with your core positioning, use keyword-rich terms that recruiters search for, and stay within character limits. The "·" separators are clean and professional. Including "MSOE '27" signals your timeline clearly.</p>
+  </div>
+
+  <!-- 03 About / Summary -->
+  <div class="section">
+    <div class="section-label">03 — About Section</div>
+    <h2>About Section (Summary)</h2>
+    <div class="divider"></div>
+
+    <p>LinkedIn gives you 2,600 characters for the About section. Use the first 2–3 lines to hook — they appear above the "See more" fold. Write in first person, reflect your voice, and make it scannable with brief paragraphs or line breaks.</p>
+
+    <div class="code-block">
+      <div class="code-label">Recommended About Section</div>
+      <pre>The best product decisions start with going directly to the user — and that's the mindset I bring to every project.
+
+I'm a UX Researcher and Designer at Milwaukee School of Engineering (B.S. User Experience Engineering, '27), also completing a certificate in AI for Emerging Applications. I specialize in qualitative research, accessibility evaluation, and conversational AI design.
+
+<em>What I bring to teams:</em>
+
+Research: Field observations · Semi-structured interviews · Usability testing · Affinity mapping · Competitive analysis · Thematic synthesis
+
+Design & Accessibility: WCAG 2.1 AA/AAA evaluation · Conversational AI design · Inclusive design · UI design systems · Figma
+
+Technical: HTML · CSS/SCSS · Python · Git/GitHub
+
+My research mindset isn't just academic. As a Branch Manager Intern with College Works Painting, I ran a residential painting business — conducting door-to-door homeowner interviews, reading client reactions in real time, managing full project lifecycles, and leading a crew of 20+. That's field research: going to the user, identifying needs, and delivering outcomes.
+
+As Lead UX Designer for MSOE's Rocket Club, I build and maintain the club website while leading cross-functional design and accessibility work.
+
+Open to: UX Research Internships · UX Design Internships · UX Consulting · Freelance Accessibility Audits
+
+Let's connect: mikeromanek04@gmail.com | mikeromanek.github.io/portfolio</pre>
+    </div>
+  </div>
+
+  <!-- 04 Experience -->
+  <div class="section">
+    <div class="section-label">04 — Experience</div>
+    <h2>Experience Entries</h2>
+    <div class="divider"></div>
+    <p>Each experience entry should lead with a strong, keyword-rich description and use measurable outcomes where possible. Ensure all MSOE project roles are listed as separate positions under "Milwaukee School of Engineering" so they're grouped and visible.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Entry</th>
+            <th>Priority Update</th>
+            <th>Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>COVE Space Research</strong></td>
+            <td>Add keywords: "affinity mapping," "field observations," "mixed-methods." Add the insight about proximity-driven behavior — it's a strong, specific outcome.</td>
+            <td><span class="badge badge-high">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>WCAG Accessibility</strong></td>
+            <td>Keep "WAVE, AXE, screen readers" — these are searchable terms. Mention the specific standards (AA/AAA) and the deliverable (prioritized report).</td>
+            <td><span class="badge badge-high">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>College Works Painting</strong></td>
+            <td>Frame as UX field research explicitly: "door-to-door homeowner interviews," "real-time stakeholder communication," "data-informed proposals." This bridges entrepreneurship → UX research.</td>
+            <td><span class="badge badge-high">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>Rocket Club UX</strong></td>
+            <td>Add "component library," "cross-functional collaboration," and "accessibility evaluation." These are strong team leadership signals.</td>
+            <td><span class="badge badge-med">Medium</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tom's Watch Bar / Mecca</strong></td>
+            <td>Keep brief. Frame as: real-time user empathy, communication under pressure, cross-functional team coordination. No need for extensive bullets.</td>
+            <td><span class="badge badge-med">Medium</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 05 Featured Section -->
+  <div class="section">
+    <div class="section-label">05 — Featured</div>
+    <h2>Featured Section</h2>
+    <div class="divider"></div>
+    <p>The Featured section sits high on the profile and gives you visual real estate. Curate it to 2–3 high-quality items that immediately demonstrate your work.</p>
+    <ul class="checklist">
+      <li><div class="check-box"></div><span><strong>Portfolio Link:</strong> Feature mikeromanek.github.io/portfolio/ with a custom thumbnail using your brand banner.</span></li>
+      <li><div class="check-box"></div><span><strong>COVE Research PDF:</strong> Upload or link the COVE UX Research Report — your strongest standalone research artifact.</span></li>
+      <li><div class="check-box"></div><span><strong>Mike's Health &amp; Lifestyle:</strong> Link to the LinkedIn page as a demonstration of content strategy and UX-informed writing.</span></li>
+    </ul>
+  </div>
+
+  <!-- 06 Skills & Endorsements -->
+  <div class="section">
+    <div class="section-label">06 — Skills</div>
+    <h2>Skills &amp; Endorsements</h2>
+    <div class="divider"></div>
+    <p>LinkedIn allows up to 50 skills. Pin the 3 most important to the top of the list — these appear without scrolling. Prioritize skills that recruiters search for and that match your target roles.</p>
+
+    <div class="code-block">
+      <div class="code-label">Pinned Skills (Top 3)</div>
+      <pre>1. <em>UX Research</em>
+2. <em>Accessibility (WCAG 2.1)</em>
+3. <em>User Interviews</em></pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-label">Additional Recommended Skills</div>
+      <pre>Qualitative Research · Usability Testing · Affinity Mapping · Field Research
+Figma · Wireframing · Prototyping · Design Systems · Inclusive Design
+Conversational AI Design · Human-Computer Interaction
+HTML · CSS · SCSS · Python · Git
+WAVE · AXE · Screen Readers</pre>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Endorsement Strategy</div>
+      <p>Seek endorsements from: your MSOE professors (especially UX Research and Inclusive Design faculty), classmates from project teams, and supervisors from current/past work. A personalized message asking for a specific skill endorsement has a much higher response rate than a generic request.</p>
+    </div>
+  </div>
+
+  <!-- 07 Recommendations -->
+  <div class="section">
+    <div class="section-label">07 — Recommendations</div>
+    <h2>Getting Recommendations</h2>
+    <div class="divider"></div>
+    <p>Written recommendations from credible sources are among the highest-trust signals on LinkedIn. Aim for 2–3 strong ones from different relationship types.</p>
+
+    <div class="priority-grid">
+      <div class="priority-card">
+        <div class="pnum">Academic</div>
+        <h3>UX Professor / Instructor</h3>
+        <p>Your UXD 3010 or UXD 2010 instructor can speak directly to your research methodology, academic rigor, and the quality of your deliverables. Ask for something specific — your affinity mapping work, your accessibility audit approach.</p>
+      </div>
+      <div class="priority-card">
+        <div class="pnum">Professional</div>
+        <h3>Supervisor or Manager</h3>
+        <p>The MSOE Training Assistant coordinator or a manager from Tom's Watch Bar / Mecca who can speak to your reliability, communication, and cross-functional collaboration.</p>
+      </div>
+      <div class="priority-card">
+        <div class="pnum">Peer / Collaborator</div>
+        <h3>Rocket Club Teammate</h3>
+        <p>A teammate from the Rocket Club who experienced your cross-functional leadership, design process, or accessibility work firsthand.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">How to Ask</div>
+      <p>When requesting a recommendation, give your contact context: share your resume and a 2–3 sentence summary of what you're seeking (UX Research internships). Suggest 1–2 specific things they might mention — it makes writing easier and the result more useful to you.</p>
+    </div>
+  </div>
+
+  <!-- 08 Brand Consistency Audit -->
+  <div class="section">
+    <div class="section-label">08 — Final Audit</div>
+    <h2>Cross-Platform Consistency Checklist</h2>
+    <div class="divider"></div>
+    <p>Run through this checklist to confirm every channel reflects a unified brand.</p>
+
+    <ul class="checklist">
+      <li><div class="check-box"></div><span><strong>Resume:</strong> Playfair Display + Inter typography, burgundy section headers and rules, consistent contact info.</span></li>
+      <li><div class="check-box"></div><span><strong>Cover Letter:</strong> Matching header design to resume — same name treatment, same color rule, same contact layout.</span></li>
+      <li><div class="check-box"></div><span><strong>LinkedIn Photo:</strong> Professional headshot, consistent with the tone of your brand (polished, approachable, research-credible).</span></li>
+      <li><div class="check-box"></div><span><strong>LinkedIn Banner:</strong> Brand colors (#111111 + #7A1E2C), MR monogram or wordmark, your headline in Playfair Display.</span></li>
+      <li><div class="check-box"></div><span><strong>LinkedIn Headline:</strong> Research-forward, keyword-rich, "MSOE '27," "Open to Internships."</span></li>
+      <li><div class="check-box"></div><span><strong>LinkedIn About:</strong> First-person voice, hooks above the fold, structured specialties, links to portfolio.</span></li>
+      <li><div class="check-box"></div><span><strong>Portfolio Website:</strong> Same brand palette and typography as documents; sidebar navigation with MR logo.</span></li>
+      <li><div class="check-box"></div><span><strong>Portfolio URL:</strong> Listed consistently across all documents as mikeromanek.github.io/portfolio/</span></li>
+      <li><div class="check-box"></div><span><strong>Email Signature:</strong> Name in Playfair Display or bold, title, and links to LinkedIn + portfolio — consistent with header format.</span></li>
+      <li><div class="check-box"></div><span><strong>Tone Consistency:</strong> Direct, research-authoritative voice across all channels. Lead with methodology, not just titles.</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="doc-footer">
+  <span>MR</span> &nbsp;·&nbsp; LinkedIn Optimization Guide &nbsp;·&nbsp; Michael Romanek &nbsp;·&nbsp; Part 3 Brand Application
+</div>
+
+</body>
+</html>

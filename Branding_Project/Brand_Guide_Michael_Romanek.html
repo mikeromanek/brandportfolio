@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael Romanek — Brand Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FFFFFF;
+    color: #111111;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 32px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 80px 0 60px;
+    border-bottom: 3px solid #111111;
+    margin-bottom: 60px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #111111;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #7A1E2C;
+    font-weight: 500;
+  }
+  .hero .direction {
+    font-size: 13px;
+    color: #4A4F55;
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 64px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 8px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #7A1E2C;
+    display: inline-block;
+  }
+  .section-desc {
+    color: #4A4F55;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 32px;
+    max-width: 640px;
+  }
+
+  /* Color Palette */
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .swatch {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E8E8E8;
+  }
+  .swatch-color {
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px;
+  }
+  .swatch-color span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.85);
+    color: #111;
+  }
+  .swatch-info {
+    padding: 12px;
+    background: #FAFAFA;
+  }
+  .swatch-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: #111;
+    margin-bottom: 4px;
+  }
+  .swatch-role {
+    font-size: 11px;
+    color: #4A4F55;
+    line-height: 1.4;
+  }
+
+  /* Typography */
+  .type-specimen {
+    margin-bottom: 32px;
+    padding: 32px;
+    background: #FAFAFA;
+    border-radius: 8px;
+    border-left: 4px solid #7A1E2C;
+  }
+  .type-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #7A1E2C;
+    margin-bottom: 12px;
+  }
+  .type-heading-sample {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 4px;
+  }
+  .type-body-sample {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #111111;
+    line-height: 1.7;
+  }
+  .type-mono-sample {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: #111111;
+    background: #F2F2F2;
+    padding: 16px;
+    border-radius: 4px;
+  }
+  .type-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: #4A4F55;
+    margin-top: 8px;
+  }
+
+  /* Logo display */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .logo-card {
+    border: 1px solid #E8E8E8;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .logo-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    min-height: 240px;
+  }
+  .logo-preview.dark { background: #111111; }
+  .logo-preview.light { background: #FFFFFF; }
+  .logo-caption {
+    padding: 12px 16px;
+    background: #FAFAFA;
+    font-size: 12px;
+    color: #4A4F55;
+    border-top: 1px solid #E8E8E8;
+  }
+
+  /* MR Monogram SVG inline */
+  .mr-dark svg, .mr-light svg { width: 160px; height: 160px; }
+
+  /* Accessibility */
+  .contrast-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .contrast-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: #111111;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .contrast-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #E8E8E8;
+  }
+  .pass { color: #27823B; font-weight: 600; }
+  .fail { color: #C0392B; font-weight: 600; }
+
+  /* Usage rules */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .rule-card {
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #E8E8E8;
+  }
+  .rule-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #111;
+  }
+  .rule-card p {
+    font-size: 13px;
+    color: #4A4F55;
+    line-height: 1.5;
+  }
+  .do { border-left: 4px solid #27823B; }
+  .dont { border-left: 4px solid #C0392B; }
+
+  /* Overall aesthetic */
+  .aesthetic-box {
+    padding: 40px;
+    background: #111111;
+    color: #FFFFFF;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .aesthetic-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .aesthetic-box p {
+    font-size: 14px;
+    color: #CCCCCC;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .aesthetic-box .accent-line {
+    width: 80px;
+    height: 3px;
+    background: #7A1E2C;
+    margin: 20px auto;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Brand Guide</h1>
+    <div class="subtitle">Michael Romanek</div>
+    <div class="direction">Direction B: Research Authority Minimal</div>
+  </div>
+
+  <!-- COLOR PALETTE -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+    <p class="section-desc">A restrained, high-contrast palette that communicates strategic maturity and research authority. Minimal reliance on color alone supports accessibility best practices.</p>
+
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#111111;"><span>#111111</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Rich Black</div>
+          <div class="swatch-role">Headers, navigation, primary buttons</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4A4F55;"><span>#4A4F55</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cool Graphite</div>
+          <div class="swatch-role">Secondary text, links, accents</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#7A1E2C;"><span>#7A1E2C</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Deep Burgundy</div>
+          <div class="swatch-role">Strategic callouts, key metrics, accent</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FFFFFF; border-bottom: 1px solid #E8E8E8;"><span>#FFFFFF</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Pure White</div>
+          <div class="swatch-role">Backgrounds, content sections</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F2F2F2;"><span>#F2F2F2</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Light Gray</div>
+          <div class="swatch-role">Dividers, supporting content, cards</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+    <p class="section-desc">Three typefaces that balance editorial authority with digital clarity.</p>
+
+    <div class="type-specimen">
+      <div class="type-label">Headings — Playfair Display</div>
+      <div class="type-heading-sample">Research Authority</div>
+      <div class="type-meta">Playfair Display Bold · 36px · Editorial authority, intellectual depth</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Body — Inter</div>
+      <div class="type-body-sample">UX Researcher and Designer specializing in accessibility evaluation, conversational AI design, and qualitative research methods. I solve product problems by listening to users first — conducting field observations, interviews, and usability tests.</div>
+      <div class="type-meta">Inter Regular · 16px/1.7 · Clean, rational, highly legible, accessibility-first</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Code & Data — IBM Plex Mono</div>
+      <div class="type-mono-sample">Methods: Field observations, semi-structured interviews
+Tools: WAVE, AXE, Figma, HTML/CSS/SCSS
+Deliverables: Research reflection, accessibility audit report</div>
+      <div class="type-meta">IBM Plex Mono Regular · 14px · Research tables, AI data, technical details</div>
+    </div>
+  </div>
+
+  <!-- LOGO -->
+  <div class="section">
+    <div class="section-title">Logo / Monogram</div>
+    <p class="section-desc">A structured geometric 'MR' monogram. Refined, restrained, and scalable at small sizes. The burgundy accent line adds warmth without decorative noise.</p>
+
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="logo-preview dark">
+          <svg viewBox="0 0 320 320" width="160" height="160">
+            <rect width="320" height="320" fill="#111111"/>
+            <rect x="32" y="60" width="18" height="160" fill="#FFFFFF"/>
+            <polygon points="50,60 108,160 108,132 68,60" fill="#FFFFFF"/>
+            <polygon points="166,60 108,160 108,132 148,60" fill="#FFFFFF"/>
+            <rect x="148" y="60" width="18" height="160" fill="#FFFFFF"/>
+            <rect x="24" y="56" width="34" height="6" fill="#FFFFFF"/>
+            <rect x="140" y="56" width="34" height="6" fill="#FFFFFF"/>
+            <rect x="24" y="218" width="34" height="6" fill="#FFFFFF"/>
+            <rect x="140" y="218" width="34" height="6" fill="#FFFFFF"/>
+            <rect x="188" y="60" width="18" height="160" fill="#FFFFFF"/>
+            <rect x="180" y="56" width="80" height="6" fill="#FFFFFF"/>
+            <rect x="180" y="218" width="34" height="6" fill="#FFFFFF"/>
+            <rect x="206" y="60" width="42" height="14" fill="#FFFFFF"/>
+            <rect x="240" y="60" width="14" height="82" fill="#FFFFFF"/>
+            <rect x="206" y="130" width="42" height="14" fill="#FFFFFF"/>
+            <polygon points="214,144 260,224 242,224 200,150" fill="#FFFFFF"/>
+            <rect x="236" y="218" width="30" height="6" fill="#FFFFFF"/>
+            <rect x="0" y="250" width="320" height="4" fill="#7A1E2C"/>
+          </svg>
+        </div>
+        <div class="logo-caption">Primary — White on Rich Black</div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-preview light" style="border: 1px solid #E8E8E8;">
+          <svg viewBox="0 0 320 320" width="160" height="160">
+            <rect width="320" height="320" fill="#FFFFFF"/>
+            <rect x="32" y="60" width="18" height="160" fill="#111111"/>
+            <polygon points="50,60 108,160 108,132 68,60" fill="#111111"/>
+            <polygon points="166,60 108,160 108,132 148,60" fill="#111111"/>
+            <rect x="148" y="60" width="18" height="160" fill="#111111"/>
+            <rect x="24" y="56" width="34" height="6" fill="#111111"/>
+            <rect x="140" y="56" width="34" height="6" fill="#111111"/>
+            <rect x="24" y="218" width="34" height="6" fill="#111111"/>
+            <rect x="140" y="218" width="34" height="6" fill="#111111"/>
+            <rect x="188" y="60" width="18" height="160" fill="#111111"/>
+            <rect x="180" y="56" width="80" height="6" fill="#111111"/>
+            <rect x="180" y="218" width="34" height="6" fill="#111111"/>
+            <rect x="206" y="60" width="42" height="14" fill="#111111"/>
+            <rect x="240" y="60" width="14" height="82" fill="#111111"/>
+            <rect x="206" y="130" width="42" height="14" fill="#111111"/>
+            <polygon points="214,144 260,224 242,224 200,150" fill="#111111"/>
+            <rect x="236" y="218" width="30" height="6" fill="#111111"/>
+            <rect x="0" y="250" width="320" height="4" fill="#7A1E2C"/>
+          </svg>
+        </div>
+        <div class="logo-caption">Reversed — Rich Black on White</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCESSIBILITY -->
+  <div class="section">
+    <div class="section-title">Accessibility Compliance</div>
+    <p class="section-desc">All primary text combinations meet WCAG AA standards. Majority meet AAA. Fully colorblind-safe palette.</p>
+
+    <table class="contrast-table">
+      <thead>
+        <tr>
+          <th>Combination</th>
+          <th>Ratio</th>
+          <th>AA (Normal)</th>
+          <th>AA (Large)</th>
+          <th>AAA (Normal)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rich Black on White</td>
+          <td>18.6:1</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Cool Graphite on White</td>
+          <td>7.2:1</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Deep Burgundy on White</td>
+          <td>9.4:1</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>White on Rich Black</td>
+          <td>18.6:1</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+        </tr>
+        <tr>
+          <td>Light Gray on Rich Black</td>
+          <td>15.9:1</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+          <td class="pass">Pass</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- USAGE RULES -->
+  <div class="section">
+    <div class="section-title">Usage Guidelines</div>
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <h4>Do</h4>
+        <p>Use strong typography hierarchy with generous whitespace. Let the content and structure communicate authority. Use burgundy sparingly for accent — callouts, key insights, and section borders only.</p>
+      </div>
+      <div class="rule-card dont">
+        <h4>Don't</h4>
+        <p>Add decorative elements, gradients, or illustrations. Don't use burgundy for large areas of color. Don't pair the palette with playful or rounded typefaces. Avoid clutter.</p>
+      </div>
+      <div class="rule-card do">
+        <h4>Portfolio Application</h4>
+        <p>Case studies should read like structured research briefs: clear headers, disciplined whitespace, data-forward layouts. The design should communicate consultant-level maturity and thought leadership.</p>
+      </div>
+      <div class="rule-card do">
+        <h4>Resume & LinkedIn</h4>
+        <p>Keep the same Calibri/Inter body font for consistency. Use the color palette for portfolio and personal website only — resumes stay black and white for ATS compatibility.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERALL AESTHETIC -->
+  <div class="section">
+    <div class="aesthetic-box">
+      <h3>Minimal. Strategic. Timeless.</h3>
+      <div class="accent-line"></div>
+      <p>The portfolio should function as proof of concept: strong typography hierarchy, disciplined whitespace, structured research briefs, and zero decorative noise. Visual identity communicates consultant-level maturity and thought leadership.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
